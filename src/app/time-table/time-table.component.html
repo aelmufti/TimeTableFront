@@ -1,0 +1,41 @@
+
+
+  <div class ="display" *ngIf ="day != undefined ">
+    <table style="margin-top: 5rem">
+      <thead>
+      <tr>
+        <th>Time</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let slot of day.slots">
+        <td class ="times">
+          {{slot.startTime}}
+        </td>
+        <td>
+          <input class ="input" [(ngModel)]="slot.activity" placeholder="Enter current activity">
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <div *ngFor="let grat of day.gratitudes">
+      <input class ="gratitude"[(ngModel)]="grat.content" placeholder="Enter what you're grateful for" >
+    </div>
+
+    <button (click) = 'validate()'>
+      Valider
+    </button>
+<div class ="currentDate">
+  <mat-form-field class="example-full-width">
+    <mat-label>Choose a date</mat-label>
+    <input matInput  [matDatepickerFilter]="myFilter" [matDatepicker]="picker" (dateInput)="onDateChange($event)">
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+
+</div>
+  </div>
+
+
